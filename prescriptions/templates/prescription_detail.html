@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Prescription for {{ prescription.patient_name }}</h2>
+    <p>Symptoms: {% for symptom in prescription.symptoms.all %}{{ symptom.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Medications: {% for med in prescription.medications.all %}{{ med.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Notes: {{ prescription.notes }}</p>
+    {% if invoice %}
+        <p>Invoice Total: ${{ invoice.total_amount }}</p>
+        <p>Paid: {% if invoice.paid %}Yes{% else %}No{% endif %}</p>
+    {% endif %}
+{% endblock %}

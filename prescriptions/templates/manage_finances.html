@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Manage Finances</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Record</button>
+    </form>
+    <h3>Financial Records</h3>
+    <ul>
+    {% for record in records %}
+        <li>{{ record.description }} - {{ record.transaction_type }} - ${{ record.amount }}</li>
+    {% empty %}
+        <li>No financial records</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

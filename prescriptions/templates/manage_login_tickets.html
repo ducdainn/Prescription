@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Manage Login Tickets</h2>
+    <ul>
+    {% for ticket in tickets %}
+        <li>{{ ticket.user.username }} logged in at {{ ticket.login_time }} from {{ ticket.ip_address }}</li>
+    {% empty %}
+        <li>No login tickets</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Manage Supplies</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Supply</button>
+    </form>
+    <h3>Current Supplies</h3>
+    <ul>
+    {% for supply in supplies %}
+        <li>{{ supply.name }} - Quantity: {{ supply.quantity }} - Price/Unit: ${{ supply.price_per_unit }}</li>
+    {% empty %}
+        <li>No supplies available</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

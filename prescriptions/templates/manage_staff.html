@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Manage Staff</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Staff</button>
+    </form>
+    <h3>Current Staff</h3>
+    <ul>
+    {% for member in staff %}
+        <li>{{ member.name }} - {{ member.role }} - Salary: ${{ member.salary }}</li>
+    {% empty %}
+        <li>No staff members</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

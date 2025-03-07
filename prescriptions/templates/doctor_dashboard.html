@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Doctor Dashboard</h2>
+    <h3>Recent Medications</h3>
+    <ul>
+    {% for medication in medications %}
+        <li>{{ medication.name }} - Stock: {{ medication.quantity_in_stock }}</li>
+    {% empty %}
+        <li>No medications available</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

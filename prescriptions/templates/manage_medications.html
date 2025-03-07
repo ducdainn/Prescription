@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Manage Medications</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Medication</button>
+    </form>
+    <h3>Current Medications</h3>
+    <ul>
+    {% for med in medications %}
+        <li>{{ med.name }} - Stock: {{ med.quantity_in_stock }} - Price: ${{ med.price }}</li>
+    {% empty %}
+        <li>No medications available</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
